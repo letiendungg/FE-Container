@@ -1,13 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ToastContainer } from "react-toastify";
+import { PersistGate } from "redux-persist/integration/react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
+import { store, persistor } from "./Redux/store";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+    },
+  },
+});
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <ToastContainer
+            position="bottom-left"
+            autoClose={5000}
+            closeOnClick
+          />
+          <App />
+        </QueryClientProvider>
+      </Provider>
+    </PersistGate>
   </React.StrictMode>
 );
 
