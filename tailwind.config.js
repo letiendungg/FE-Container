@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         main: "#33424f",
         subMain: "#ff6600",
+        border: "#4b5563",
+        dryGray: "#E0D5D5",
       },
       fontFamily: {
         euclid: ["Euclid Circular A", "sans-serif"],
