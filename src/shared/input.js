@@ -30,7 +30,7 @@ export const Input = ({
   return (
     <>
       <div className="text-[13px] w-full">
-        <label className="text-white font-semibold font-euclid mb-2">
+        <label className="text-main font-normal font-euclid mb-2">
           {label}
         </label>
         <div className="flex flex-col">
