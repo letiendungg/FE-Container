@@ -1,9 +1,9 @@
 export const Select = ({ label, options, register, name }) => {
   return (
-    <>
-      <label className="text-border font-semibold">{label}</label>
+    <div className="text-[13px] w-full">
+      <label className="text-main font-normal font-euclid mb-2">{label}</label>
       <select
-        className="w-full mt-2 px-6 py-4 text-text bg-main border border-border rounded "
+        className="w-full p-2 text-text  border border-border rounded "
         {...register}
         name={name}
       >
@@ -13,7 +13,7 @@ export const Select = ({ label, options, register, name }) => {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 export const Input = ({
