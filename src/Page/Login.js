@@ -11,7 +11,7 @@ import { loginApi } from "../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { signInSuccess } from "../Redux/user.slice";
-import { current } from "@reduxjs/toolkit";
+import GoogleLogin from "../Components/GoogleLogin";
 function Login() {
   const {
     register,
@@ -22,8 +22,10 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
+
   const { mutate, isLoading } = useMutation(loginApi, {
     onSuccess: (data) => {
+      localStorage.setItem("token", data.access_token);
       dispatch(signInSuccess(data.user));
       navigate("/");
       toast.success("Login success");
@@ -32,6 +34,7 @@ function Login() {
       toast.error(error.message);
     },
   });
+
   const onSubmit = (data) => {
     mutate(data);
   };
@@ -103,10 +106,7 @@ function Login() {
               </div>
             </form>
             <div className="border border-t-1 border-slate-300 w-full my-6"></div>
-            <div className="flex gap-2 justify-center border border-slate-600 py-2 rounded">
-              <img className="w-6 h-6" src="/google.png" alt="google" />
-              <p>Login with google</p>
-            </div>
+            <GoogleLogin />
             <div className="flex justify-between py-3 mt-6">
               <Link to={"/sign-up"} className=" text-xs">
                 Dont have account?{" "}
