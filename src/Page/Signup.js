@@ -71,7 +71,7 @@ function Signup() {
                   <Input
                     label="Fullname"
                     placeholder="Enter your fullname"
-                    register={register("fullname", {
+                    register={register("fullName", {
                       required: "Fullname is required",
                       pattern: {
                         required: "fullname is required",
