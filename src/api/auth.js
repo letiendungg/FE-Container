@@ -48,7 +48,6 @@ export const authenGoogleApi = async (dataLogin) => {
   }
 };
 
-
 export const SignupApi = async (user) => {
   try {
     const { data } = await axios.post(
@@ -72,3 +71,26 @@ export const SignupApi = async (user) => {
   }
 };
 
+// export const updateProfile = async (user) => {
+//   try {
+//     const { data } = await axios.put(
+//       `${API_BASE_URL}/api/v1/users/updateprofile/${user.id}`,
+//       user,
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           "Authorization": `Bear ${accessToken}`
+//         },
+//       }
+//     );
+//     return data; // Returning the data received from the server
+//   } catch (error) {
+//     if (error.response && error.response.data && error.response.data.message) {
+//       // If the server provides a specific error message, use it
+//       throw new Error(error.response.data.message);
+//     } else {
+//       // Otherwise, use a generic error message
+//       throw new Error("An error occurred during sign up.");
+//     }
+//   }
+// };
