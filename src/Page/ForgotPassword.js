@@ -35,6 +35,9 @@ function ForgotPassowrd() {
       navigate("/");
     }
   }, [currentUser]);
+  const handleCancle = () => {
+    navigate("/login");
+  };
   return (
     <Layout>
       <div className="min-h-screen background flex items-center">
@@ -67,12 +70,12 @@ function ForgotPassowrd() {
                   {isLoading ? "Loading" : "Continue"}
                 </button>
               </div>
-              <button
-                type="submit"
-                className="text-subMain bg-white rounded font-semibold w-full py-2 hover:bg-white hover:text-subMain hover:border"
+              <div
+                onClick={handleCancle}
+                className="flex items- justify-center text-subMain bg-white rounded font-semibold w-full py-2 hover:cursor-pointer hover:bg-white hover:text-subMain hover:border"
               >
-                Cancel
-              </button>
+                <p>Cancel</p>
+              </div>
             </form>
           </div>
         </div>
