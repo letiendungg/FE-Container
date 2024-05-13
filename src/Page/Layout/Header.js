@@ -7,7 +7,7 @@ function Header() {
     <div>
       <div className="flex justify-between">
         <div className="flex">
-          <Link to={"/"} className="flex items-center gap-2 mx-8 my-2">
+          <Link to={"/"} className="flex items-center gap-2 mx-6">
             <img
               className="w-10 h-8 md:w-20 md:h-16"
               src="/box.png"
@@ -22,7 +22,7 @@ function Header() {
           <div className="font-bold text-subMain text-sm md:text-base">
             We'r hiring
           </div>
-          <div className="border border-r-1 border-gray-300 h-6 my-6"></div>
+          <div className="border border-r-1 border-gray-300 h-6 "></div>
           <Link
             to={"/login"}
             className="flex items-center gap-2 px-3 py-2 bg-subMain rounded text-white"
@@ -32,7 +32,7 @@ function Header() {
           </Link>
         </div>
       </div>
-      <div className="bg-main h-10"></div>
+      <div className="bg-main h-14"></div>
     </div>
   );
 }

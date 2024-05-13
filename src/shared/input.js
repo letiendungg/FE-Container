@@ -1,9 +1,10 @@
+import "./style.scss";
 export const Select = ({ label, options, register, name }) => {
   return (
     <div className="text-[13px] w-full">
       <label className="text-main font-normal font-euclid mb-2">{label}</label>
       <select
-        className="w-full p-2 text-text  border border-border rounded "
+        className="w-full p-2 text-text  input-signup "
         {...register}
         name={name}
       >
@@ -30,7 +31,10 @@ export const Input = ({
   return (
     <>
       <div className="text-[13px] w-full">
-        <label className="text-main font-normal font-euclid mb-2">
+        <label
+          form="input-id"
+          className="text-main font-normal text-sm font-euclid inline-block mb-1"
+        >
           {label}
         </label>
         <div className="flex flex-col">
@@ -43,7 +47,8 @@ export const Input = ({
               {...register}
               type={type}
               placeholder={placeholder}
-              className={`w-full text-sm font-euclid font-normal p-2 text-black border border-border rounded-md ${
+              id="input-id"
+              className={`w-full text-sm font-euclid font-normal p-2 text-black input-signup ${
                 bg ? "bg-main" : "bg-white"
               }`}
             />

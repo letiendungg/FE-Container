@@ -44,14 +44,14 @@ function Signup() {
   }, [currentUser]);
   return (
     <Layout>
-      <div className="min-h-screen bg-gray">
+      <div className="min-h-screen background">
         <div className="flex mx-auto w-[500px] bg-white">
-          <div className="px-14 py-14 w-full">
+          <div className="px-14 py-10 w-full">
             <div>
               <h2 className="font-semibold text-3xl">Register Account</h2>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex flex-col gap-4 my-8">
+              <div className="flex flex-col gap-4 mt-5 mb-4">
                 <div>
                   <Input
                     label="Email-address"
