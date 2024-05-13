@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../Page/Layout/Layout";
+import Layout from "../Page/Layout/Layout";
 import { useForm } from "react-hook-form";
-import { Input, Select } from "../../shared/input";
-import { InlineError } from "../../shared/error";
+import { Input, Select } from "../shared/input";
+import { InlineError } from "../shared/error";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { SignupApi } from "../../api/auth";
+import { SignupApi } from "../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import "../style.scss";
-function ResetPasswordWithEmail() {
+import "../Page/style.scss";
+function AuthenticateWithOTP() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm();
 
   const navigate = useNavigate();
@@ -38,27 +37,35 @@ function ResetPasswordWithEmail() {
   }, [currentUser]);
   return (
     <Layout>
-      <div className="min-h-screen background">
+      <div className="flex items-center min-h-screen background">
         <div className="flex mx-auto w-[500px] bg-white">
           <div className="px-14 py-10 w-full">
             <div>
-              <h2 className="font-semibold text-3xl">Reset Password</h2>
+              <h2 className="font-semibold text-3xl">CONFIRM OTP</h2>
+              <p className="text-xs mt-1 opacity-65">
+                Verification code has been sent. Please copy it to the input box
+                below
+              </p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-4 mt-5 mb-4">
                 <div>
                   <Input
-                    label="Email-address"
-                    placeholder="Enter your email "
+                    label="Enter OTP"
+                    placeholder="Enter otp "
                     register={register("email", {
                       required: "Email is required",
                       pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        message: "Invalid email address",
+                        value: /^\d{6}$/i,
+                        message: "Invalid OTP code, please enter 6 digits.",
                       },
                     })}
                   />
                   {errors.email && <InlineError text={errors.email.message} />}
+                  <p className="text-xs mt-1 opacity-65">
+                    Check you email box and paste the code you received and
+                    click Verify code
+                  </p>
                 </div>
 
                 <button
@@ -68,12 +75,11 @@ function ResetPasswordWithEmail() {
                   {isLoading ? "Loading" : "Continue"}
                 </button>
               </div>
-              <button
-                type="submit"
-                className="text-cancel bg-cancel rounded font-semibold w-full py-2 hover:bg-white hover:text-subMain hover:border"
-              >
-                Cancel
-              </button>
+              <Link to={"/login"} className="">
+                <button className="text-cancel bg-cancel rounded font-semibold w-full py-2 hover:bg-white hover:text-subMain hover:border">
+                  Cancel
+                </button>
+              </Link>
             </form>
           </div>
         </div>
@@ -82,4 +88,4 @@ function ResetPasswordWithEmail() {
   );
 }
 
-export default ResetPasswordWithEmail;
+export default AuthenticateWithOTP;

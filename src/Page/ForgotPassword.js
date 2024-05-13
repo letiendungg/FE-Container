@@ -9,7 +9,7 @@ import { SignupApi } from "../../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import "../style.scss";
-function AuthenticateWithOTP() {
+function ForgotPassowrd() {
   const {
     register,
     handleSubmit,
@@ -42,31 +42,23 @@ function AuthenticateWithOTP() {
         <div className="flex mx-auto w-[500px] bg-white">
           <div className="px-14 py-10 w-full">
             <div>
-              <h2 className="font-semibold text-3xl">Register Account</h2>
-              <p className="text-xs mt-1 opacity-65">
-                Verification code has been sent. Please copy it to the input box
-                below
-              </p>
+              <h2 className="font-semibold text-3xl">Reset Password</h2>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-4 mt-5 mb-4">
                 <div>
                   <Input
-                    label="Enter OTP"
-                    placeholder="Enter otp "
+                    label="Email-address"
+                    placeholder="Enter your email "
                     register={register("email", {
                       required: "Email is required",
                       pattern: {
-                        value: /^\d{6}$/i,
-                        message: "Invalid OTP code, please enter 6 digits.",
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Invalid email address",
                       },
                     })}
                   />
                   {errors.email && <InlineError text={errors.email.message} />}
-                  <p className="text-xs mt-1 opacity-65">
-                    Check you email box and paste the code you received and
-                    click Verify code
-                  </p>
                 </div>
 
                 <button
@@ -76,11 +68,12 @@ function AuthenticateWithOTP() {
                   {isLoading ? "Loading" : "Continue"}
                 </button>
               </div>
-              <Link to={"/login"} className="">
-                <button className="text-cancel bg-cancel rounded font-semibold w-full py-2 hover:bg-white hover:text-subMain hover:border">
-                  Cancel
-                </button>
-              </Link>
+              <button
+                type="submit"
+                className="text-subMain bg-white rounded font-semibold w-full py-2 hover:bg-white hover:text-subMain hover:border"
+              >
+                Cancel
+              </button>
             </form>
           </div>
         </div>
@@ -89,4 +82,4 @@ function AuthenticateWithOTP() {
   );
 }
 
-export default AuthenticateWithOTP;
+export default ForgotPassowrd;

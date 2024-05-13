@@ -10,8 +10,7 @@ import { useMutation } from "react-query";
 import { SignupApi } from "../../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import "../style.scss";
-function ResetPasswordWithEmail() {
+function ResetPassword() {
   const {
     register,
     handleSubmit,
@@ -119,4 +118,4 @@ function ResetPasswordWithEmail() {
   );
 }
 
-export default ResetPasswordWithEmail;
+export default ResetPassword;
