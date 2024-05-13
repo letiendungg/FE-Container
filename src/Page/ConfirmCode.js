@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 
 function ConfirmCode() {
   const { token } = useParams();
-  console.log(token);
-  return <AuthenticateWithOTP />;
+
+  return <AuthenticateWithOTP token={token} />;
 }
 
 export default ConfirmCode;

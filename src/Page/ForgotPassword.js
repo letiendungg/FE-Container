@@ -1,30 +1,25 @@
-import React, { useEffect, useState } from "react";
-import Layout from "../../Page/Layout/Layout";
+import React, { useEffect } from "react";
+import Layout from "./Layout/Layout";
 import { useForm } from "react-hook-form";
-import { Input, Select } from "../../shared/input";
-import { InlineError } from "../../shared/error";
-import { Link, useNavigate } from "react-router-dom";
+import { Input } from "../shared/input";
+import { InlineError } from "../shared/error";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { SignupApi } from "../../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import "../style.scss";
+import "./style.scss";
 function ForgotPassowrd() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm();
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const { mutate, isLoading } = useMutation(SignupApi, {
+  const { mutate, isLoading } = useMutation("", {
     onSuccess: (data) => {
-      // dispatch(signInSuccess(data.user));
-      navigate("/login");
-      toast.success("Sign up success");
+      toast.warning("Check otp code");
     },
     onError: (error) => {
       toast.error(error.message);
@@ -38,8 +33,8 @@ function ForgotPassowrd() {
   }, [currentUser]);
   return (
     <Layout>
-      <div className="min-h-screen background">
-        <div className="flex mx-auto w-[500px] bg-white">
+      <div className="min-h-screen background flex items-center">
+        <div className="flex mx-auto w-[500px] bg-white rounded-lg">
           <div className="px-14 py-10 w-full">
             <div>
               <h2 className="font-semibold text-3xl">Reset Password</h2>

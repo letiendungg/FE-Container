@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../Page/Layout/Layout";
+import Layout from "../Page/Layout/Layout";
 import { useForm } from "react-hook-form";
-import { Input, Select } from "../../shared/input";
-import { InlineError } from "../../shared/error";
+import { Input, Select } from "../shared/input";
+import { InlineError } from "../shared/error";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
 import { useMutation } from "react-query";
-import { SignupApi } from "../../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 function ResetPassword() {
@@ -22,13 +21,11 @@ function ResetPassword() {
   const [isShowPass, setIsShowPass] = useState(false);
   const [isShowCPass, setIsShowCPass] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const { mutate, isLoading } = useMutation(SignupApi, {
+  const { mutate, isLoading } = useMutation("", {
     onSuccess: (data) => {
-      // dispatch(signInSuccess(data.user));
       navigate("/login");
-      toast.success("Sign up success");
+      toast.success("Change password Success");
     },
     onError: (error) => {
       toast.error(error.message);
@@ -42,8 +39,8 @@ function ResetPassword() {
   }, [currentUser]);
   return (
     <Layout>
-      <div className="min-h-screen background">
-        <div className="flex mx-auto w-[500px] bg-white">
+      <div className="min-h-screen flex items-center background">
+        <div className="flex mx-auto w-[500px] bg-white rounded-lg">
           <div className="px-14 py-10 w-full">
             <div>
               <h2 className="font-semibold text-3xl">Reset Password</h2>

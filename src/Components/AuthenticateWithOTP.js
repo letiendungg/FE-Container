@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Layout from "../Page/Layout/Layout";
 import { useForm } from "react-hook-form";
-import { Input, Select } from "../shared/input";
+import { Input } from "../shared/input";
 import { InlineError } from "../shared/error";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { SignupApi } from "../api/auth";
+import { ConfirmCodeApi, SignupApi } from "../api/auth";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "../Page/style.scss";
-function AuthenticateWithOTP() {
+
+//api: confirmCode/:token
+function AuthenticateWithOTP({ token }) {
   const {
     register,
     handleSubmit,
@@ -17,27 +19,27 @@ function AuthenticateWithOTP() {
   } = useForm();
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const { mutate, isLoading } = useMutation(SignupApi, {
+  const { mutate, isLoading } = useMutation(ConfirmCodeApi, {
     onSuccess: (data) => {
-      // dispatch(signInSuccess(data.user));
       navigate("/login");
-      toast.success("Sign up success");
+      toast.success("Already to login");
     },
     onError: (error) => {
       toast.error(error.message);
     },
   });
   const onSubmit = (data) => {
-    mutate(data);
+    mutate({ data, token });
   };
   useEffect(() => {
-    console.log(currentUser);
+    if (currentUser) {
+      navigate("/login");
+    }
   }, [currentUser]);
   return (
     <Layout>
-      <div className="flex items-center min-h-screen background">
+      <div className="flex items-center min-h-screen background rounded-lg">
         <div className="flex mx-auto w-[500px] bg-white">
           <div className="px-14 py-10 w-full">
             <div>
@@ -53,11 +55,11 @@ function AuthenticateWithOTP() {
                   <Input
                     label="Enter OTP"
                     placeholder="Enter otp "
-                    register={register("email", {
-                      required: "Email is required",
+                    register={register("code", {
+                      required: "Code is required",
                       pattern: {
-                        value: /^\d{6}$/i,
-                        message: "Invalid OTP code, please enter 6 digits.",
+                        value: /^.{6}$/i,
+                        message: "Invalid OTP code, please enter 6 characters.",
                       },
                     })}
                   />
