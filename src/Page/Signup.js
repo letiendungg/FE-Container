@@ -11,7 +11,6 @@ import { useMutation } from "react-query";
 import { SignupApi } from "../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { signInSuccess } from "../Redux/user.slice";
 function Signup() {
   const {
     register,

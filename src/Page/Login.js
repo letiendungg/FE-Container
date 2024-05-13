@@ -23,13 +23,15 @@ function Login() {
   const [isShowPass, setIsShowPass] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, users } = useSelector((state) => state.user);
+  // const { applications } = useSelector((state) => state.application);
 
   const { mutate, isLoading } = useMutation(loginApi, {
     onSuccess: (data) => {
       localStorage.setItem("token", data.access_token);
+      //goi action reudx
+      //cai nay goi redux toolkit
       dispatch(signInSuccess(data.user));
-      navigate("/");
       toast.success("Login success");
     },
     onError: (error) => {
@@ -41,7 +43,9 @@ function Login() {
     mutate(data);
   };
   useEffect(() => {
-    console.log(currentUser);
+    if (currentUser) {
+      navigate("/");
+    }
   }, [currentUser]);
   return (
     <Layout>
