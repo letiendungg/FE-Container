@@ -3,13 +3,15 @@ import Layout from "../Page/Layout/Layout";
 import { useForm } from "react-hook-form";
 import { Input, Select } from "../shared/input";
 import { InlineError } from "../shared/error";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import { ResetPasswordApi } from "../api/auth";
 function ResetPassword() {
+  const { token } = useParams();
   const {
     register,
     handleSubmit,
@@ -22,8 +24,8 @@ function ResetPassword() {
   const [isShowCPass, setIsShowCPass] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
-  const { mutate, isLoading } = useMutation("", {
-    onSuccess: (data) => {
+  const { mutate, isLoading } = useMutation(ResetPasswordApi, {
+    onSuccess: () => {
       navigate("/login");
       toast.success("Change password Success");
     },
@@ -32,10 +34,12 @@ function ResetPassword() {
     },
   });
   const onSubmit = (data) => {
-    mutate(data);
+    mutate({ data, token });
   };
   useEffect(() => {
-    console.log(currentUser);
+    if (currentUser) {
+      navigate("/");
+    }
   }, [currentUser]);
   return (
     <Layout>

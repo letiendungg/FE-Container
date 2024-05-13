@@ -8,6 +8,8 @@ import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
+import { ForgotPassowrdApi } from "../api/auth";
+//api: users/forgotpassword
 function ForgotPassowrd() {
   const {
     register,
@@ -17,9 +19,9 @@ function ForgotPassowrd() {
 
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
-  const { mutate, isLoading } = useMutation("", {
+  const { mutate, isLoading } = useMutation(ForgotPassowrdApi, {
     onSuccess: (data) => {
-      toast.warning("Check otp code");
+      toast.warning("Send OTP to email!");
     },
     onError: (error) => {
       toast.error(error.message);
@@ -29,7 +31,9 @@ function ForgotPassowrd() {
     mutate(data);
   };
   useEffect(() => {
-    console.log(currentUser);
+    if (currentUser) {
+      navigate("/");
+    }
   }, [currentUser]);
   return (
     <Layout>
