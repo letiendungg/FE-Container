@@ -28,7 +28,6 @@ function Signup() {
   const { currentUser } = useSelector((state) => state.user);
   const { mutate, isLoading } = useMutation(SignupApi, {
     onSuccess: (data) => {
-      // dispatch(signInSuccess(data.user));
       navigate("/login");
       toast.success("Sign up success");
     },
@@ -49,6 +48,10 @@ function Signup() {
           <div className="px-14 py-10 w-full">
             <div>
               <h2 className="font-semibold text-3xl">Register Account</h2>
+              <p className="text-xs text-slate-700 leading-4 py-2">
+                Create an account today and unlock a world of possibilities with
+                our seamless registration process!
+              </p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-4 mt-5 mb-4">
