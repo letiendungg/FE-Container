@@ -1,42 +1,40 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./Layout/Layout";
+import Layout from "../../Page/Layout/Layout";
 import { useForm } from "react-hook-form";
-import { Input } from "../shared/input";
+import { Input, Select } from "../../shared/input";
+import { InlineError } from "../../shared/error";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
-import { InlineError } from "../shared/error";
-import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { loginApi } from "../api/auth";
+import { SignupApi } from "../../api/auth";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { signInSuccess } from "../Redux/user.slice";
-import GoogleLogin from "../Components/GoogleLogin";
-import "./style.scss";
-
-function Login() {
+import "../style.scss";
+function ResetPasswordWithEmail() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
+  const password = watch("password", ""); // Watching the value of the "password" input
+  const cpassword = watch("Cpassword", "");
   const [isShowPass, setIsShowPass] = useState(false);
+  const [isShowCPass, setIsShowCPass] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-
-  const { mutate, isLoading } = useMutation(loginApi, {
+  const { mutate, isLoading } = useMutation(SignupApi, {
     onSuccess: (data) => {
-      localStorage.setItem("token", data.access_token);
-      dispatch(signInSuccess(data.user));
-      navigate("/");
-      toast.success("Login success");
+      // dispatch(signInSuccess(data.user));
+      navigate("/login");
+      toast.success("Sign up success");
     },
     onError: (error) => {
       toast.error(error.message);
     },
   });
-
   const onSubmit = (data) => {
     mutate(data);
   };
@@ -47,26 +45,15 @@ function Login() {
     <Layout>
       <div className="min-h-screen background">
         <div className="flex mx-auto w-[500px] bg-white">
-          <div className="px-14 py-8 w-full">
+          <div className="px-14 py-10 w-full">
             <div>
-              <h2 className="font-semibold text-3xl">Please Login in</h2>
+              <h2 className="font-semibold text-3xl">Reset Password</h2>
+              <p className="text-xs mt-1 opacity-65">
+                The code has been verified. You can now continue.
+              </p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex flex-col gap-4 my-5">
-                <div>
-                  <Input
-                    label="Email-address"
-                    placeholder="Enter your email"
-                    register={register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        message: "Invalid email address",
-                      },
-                    })}
-                  />
-                  {errors.email && <InlineError text={errors.email.message} />}
-                </div>
+              <div className="flex flex-col gap-4 mt-5 mb-4">
                 <div>
                   <Input
                     label="Password"
@@ -97,30 +84,34 @@ function Login() {
                     <InlineError text={errors.password.message} />
                   )}
                 </div>
-              </div>
-              <div>
+                <div>
+                  <Input
+                    label="Confirm Password"
+                    placeholder="Enter your password again"
+                    suffix={
+                      <span onClick={() => setIsShowCPass(!isShowCPass)}>
+                        {isShowCPass ? <FaRegEyeSlash /> : <FaRegEye />}
+                      </span>
+                    }
+                    type={isShowCPass ? "text" : "password"}
+                    register={register("Cpassword", {
+                      required: "Confirm Password is required",
+                      validate: (value) =>
+                        value === password || "The passwords do not match",
+                    })}
+                  />
+                  {errors.Cpassword && (
+                    <InlineError text={errors.Cpassword.message} />
+                  )}
+                </div>
                 <button
                   type="submit"
                   className="text-white bg-subMain rounded font-semibold w-full py-2 hover:bg-white hover:text-subMain hover:border"
                 >
-                  {isLoading ? "Loading" : "Log in"}
+                  {isLoading ? "Loading" : "Continue"}
                 </button>
               </div>
             </form>
-            <div className="border border-t-1 border-slate-300 w-full my-6"></div>
-            <GoogleLogin />
-            <div className="flex justify-between py-3 mt-6">
-              <Link to={"/sign-up"} className=" text-xs">
-                Dont have account?{" "}
-                <span className="text-subMain underline">Signup now</span>
-              </Link>
-              <Link
-                to={"/forgot-password"}
-                className="text-subMain text-xs underline"
-              >
-                Forgot your password ?
-              </Link>
-            </div>
           </div>
         </div>
       </div>
@@ -128,4 +119,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ResetPasswordWithEmail;

@@ -27,15 +27,11 @@ export const loginApi = async (user) => {
 
 export const authenGoogleApi = async (dataLogin) => {
   try {
-    const { data } = await axios.post(
-      `${API_BASE_URL}/api/v1/users/loginGoogle`,
-      dataLogin,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const { data } = await axios.post(`${API_BASE_URL}/api/v1/`, dataLogin, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return data; // Returning the data received from the server
   } catch (error) {
     if (error.response && error.response.data && error.response.data.message) {
@@ -47,7 +43,6 @@ export const authenGoogleApi = async (dataLogin) => {
     }
   }
 };
-
 
 export const SignupApi = async (user) => {
   try {
@@ -71,4 +66,3 @@ export const SignupApi = async (user) => {
     }
   }
 };
-
