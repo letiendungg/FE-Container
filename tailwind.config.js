@@ -12,6 +12,7 @@ module.exports = {
         gray: "#f0f2f5",
         border: "#4b5563",
         dryGray: "#E0D5D5",
+        bgFooter: "#e1e8ed",
       },
       fontFamily: {
         euclid: ["Euclid Circular A", "sans-serif"],

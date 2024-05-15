@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HiLogin } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import { FaUser } from "react-icons/fa";
 
 function Header() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <div>
       <div className="flex justify-between">
@@ -27,8 +30,10 @@ function Header() {
             to={"/login"}
             className="flex items-center gap-2 px-3 py-2 bg-subMain rounded text-white"
           >
-            <HiLogin />
-            <p className="font-medium text-sm md:text-base">Login</p>
+            {currentUser ? <FaUser /> : <HiLogin />}
+            <p className="font-medium text-sm md:text-base">
+              {currentUser ? currentUser.fullName : "Login"}
+            </p>
           </Link>
         </div>
       </div>
