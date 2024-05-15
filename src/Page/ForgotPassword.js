@@ -40,7 +40,7 @@ function ForgotPassowrd() {
   };
   return (
     <Layout>
-      <div className="min-h-screen background flex items-center">
+      <div className="min-h-screen background pt-24">
         <div className="flex mx-auto w-[500px] bg-white rounded-lg">
           <div className="px-14 py-10 w-full">
             <div>
