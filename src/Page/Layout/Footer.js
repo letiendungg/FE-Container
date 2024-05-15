@@ -10,7 +10,7 @@ import { FaRegCopyright } from "react-icons/fa6";
 function Footer() {
   return (
     <div className="bg-bgFooter ">
-      <div className="grid grid-cols-5 justify-center py-4 mx-4">
+      <div className="grid grid-cols-2 md:grid-cols-5 justify-center py-4 mx-4">
         <div className="flex flex-col gap-2">
           <p className="text-sm font-bold">Services & Information</p>
           <p className="text-sm">Offices & Local Info</p>
