@@ -43,7 +43,7 @@ function ResetPassword() {
   }, [currentUser]);
   return (
     <Layout>
-      <div className="min-h-screen flex items-center background">
+      <div className="min-h-screen pt-24 background">
         <div className="flex mx-auto w-[500px] bg-white rounded-lg">
           <div className="px-14 py-10 w-full">
             <div>
