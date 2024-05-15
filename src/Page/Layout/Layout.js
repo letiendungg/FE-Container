@@ -1,13 +1,22 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-
+import Side from "./SiderBar";
+import Navbar from "./Navbar";
 function Layout({ children }) {
   return (
     <div>
       <Header />
-      <div>{children}</div>
-      <Footer />
+      <Navbar />
+      <div className="min-h-screen flex">
+        <div>
+          <Side />
+        </div>
+        <div className="w-full">
+          <div>{children}</div>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }

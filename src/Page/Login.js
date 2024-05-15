@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./Layout/Layout";
+import SimpleLayOut from "./Layout/SimpleLayOut";
 import { useForm } from "react-hook-form";
 import { Input } from "../shared/input";
 import { FaRegEyeSlash } from "react-icons/fa6";
@@ -48,7 +48,7 @@ function Login() {
     }
   }, [currentUser]);
   return (
-    <Layout>
+    <SimpleLayOut>
       <div className="min-h-screen background">
         <div className="flex mx-auto w-[500px] bg-white">
           <div className="px-14 py-8 w-full">
@@ -128,7 +128,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </Layout>
+    </SimpleLayOut>
   );
 }
 
