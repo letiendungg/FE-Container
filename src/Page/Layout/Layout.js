@@ -13,7 +13,7 @@ function Layout({ children }) {
           <Side />
         </div>
         <div className="w-full">
-          <div>{children}</div>
+          <div className="w-full">{children}</div>
           <Footer />
         </div>
       </div>

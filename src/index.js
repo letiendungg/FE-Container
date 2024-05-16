@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { store, persistor } from "./Redux/store";
 import "./index.css";
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
