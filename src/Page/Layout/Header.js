@@ -18,7 +18,7 @@ function Header() {
               src="/box.png"
               alt="logo"
             />
-            <p className="font-bold text-sm md:font-2xl font-sans text-main">
+            <p className="font-bold text-sm md:text-lg font-sans text-blue-800">
               CONTAINER
             </p>
           </Link>

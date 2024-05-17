@@ -9,8 +9,12 @@ import { Link } from "react-router-dom";
 function Sider() {
   return (
     <>
-      <div className="h-full bg-main text-white text-sm font-extrabold">
-        <Sidebar aria-label="Sidebar with multi-level dropdown" aria-hidden>
+      <div className="h-full bg-main text-white text-sm font-extrabold ">
+        <Sidebar
+          aria-label="Sidebar with multi-level dropdown"
+          className="sticky"
+          aria-hidden
+        >
           <Sidebar.Items>
             <Sidebar.ItemGroup className="flex flex-col gap-4">
               <Sidebar.Collapse
