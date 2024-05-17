@@ -56,7 +56,7 @@ function Banner() {
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        className="flex-colo xl:h-96 bg-dry lg:h-64 h-48"
+        className="flex-colo xl:h-96 bg-dry lg:h-64 h-48 w-[1140px]"
       >
         {banners.map((banner, index) => (
           <SwiperSlide key={index} className="flex-colo">

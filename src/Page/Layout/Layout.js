@@ -12,7 +12,7 @@ function Layout({ children }) {
         <div>
           <Side />
         </div>
-        <div className="w-full">
+        <div className="flex-1">
           <div className="w-full">{children}</div>
           <Footer />
         </div>
