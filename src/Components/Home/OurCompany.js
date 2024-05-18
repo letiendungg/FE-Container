@@ -11,8 +11,8 @@ function OurCompany() {
   return (
     <div>
       <TitleAndSub sub={"Our Company"} title={"Container in Numbers"} />
-      <div className="mx-8">
-        <div className="absolute flex justify-center">
+      <div className="mx-8 relative">
+        <div className="absolute flex justify-center top-[50%] left-[12%]">
           <div className=" grid grid-cols-4 gap-4 mx-20">
             <Link
               to="/about-company"
@@ -49,7 +49,7 @@ function OurCompany() {
           </div>
         </div>
 
-        <img className="" src={"./ourcompany.png"} alt="Our Company" />
+        <img className="w-full" src={"./ourcompany.png"} alt="Our Company" />
       </div>
     </div>
   );
