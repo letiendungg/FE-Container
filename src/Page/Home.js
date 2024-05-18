@@ -12,9 +12,9 @@ function Home() {
           <Banner />
           <Landing />
           <div className="mx-8 border-b-2 my-8 border-slate-400"></div>
-          <OurCompany />
-          <div className="mx-8 border-b-2 my-8 border-slate-400"></div>
           <OutLook />
+          <div className="mx-8 border-b-2 my-8 border-slate-400"></div>
+          <OurCompany />
         </div>
       </Layout>
     </>
