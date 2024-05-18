@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import { MdCalendarMonth } from "react-icons/md";
-import { Input, Select } from "../shared/input";
+import { Input, Select } from "../../shared/input";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { IoMdPricetags } from "react-icons/io";
 import { MdMiscellaneousServices } from "react-icons/md";
 import { FaRoute } from "react-icons/fa";
-import OptionNation from "../Data/OptionNation";
+import OptionNation from "../../Data/OptionNation";
+import TitleAndSub from "../TitleAndSub";
 
 function Landing() {
   const [selectedDate, setSelectedDate] = useState();
   return (
     <div className="flex flex-col ">
-      <div className="my-6 flex flex-col text-center justify-center gap-2">
-        <p className="text-xl font-extralight">Container</p>
-        <p className="font-bold text-4xl">We make Global Trade happen</p>
-        <div className="flex justify-center">
-          <div className=" w-14 border-b-[6px] border-subMain"></div>
-        </div>
-      </div>
+      <TitleAndSub sub="Container" title="We make Global Trade happen" />
       <div className="grid grid-cols-2 gap-6 my-6 mx-20">
         <div className="bg-gray rounded">
           <div className="flex flex-col gap-2 px-4 py-6">
