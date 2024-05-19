@@ -5,6 +5,7 @@ import Signup from "./Page/Signup";
 import ConfirmCode from "./Page/ConfirmCode";
 import ForgotPassword from "./Page/ForgotPassword";
 import ResetPassword from "./Page/ResetPassword";
+import Schedule from "./Page/Schedule";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/confirm-code/:token" element={<ConfirmCode />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </Router>
     </>
