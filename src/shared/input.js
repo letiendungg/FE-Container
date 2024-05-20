@@ -27,10 +27,11 @@ export const Input = ({
   value,
   onChange,
   suffix,
+  small,
 }) => {
   return (
     <>
-      <div className="text-[13px] w-full">
+      <div className={`text-[13px] ${small ? "w-96" : "w-full"}`}>
         <label
           form="input-id"
           className="text-main font-normal text-sm font-euclid inline-block mb-1"
