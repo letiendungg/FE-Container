@@ -64,7 +64,6 @@ function AboutUs() {
         <div className="w-10 my-4 border-b-4 py-2 border-subMain mx-auto mb-4"></div>
         <div class="flex flex-row w-full mx-2.5 py-4 relative">
           <div class="w-1/4 p-4 flex flex-col">
-
           </div>
           <div class="relative w-3/4">
             <div class="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-bgOur  z-10">
