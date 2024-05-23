@@ -1,4 +1,4 @@
-import { Banner } from 'flowbite-react';
+import Banner from "../Components/Home/Banner";
 import React from 'react';
 import Layout from "./Layout/Layout";
 
@@ -68,16 +68,33 @@ function AboutUs() {
           <div class="relative w-3/4">
             <div class="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-bgOur  z-10">
               <div className='mx-8 mt-10'>
-              <p className='text-white text-xl font-bold'>From Sea to Sky: Special <p className='flex flex-col'>Cargo Team ships <p className='flex flex-col'></p> Helicopter to Chile<p/></p></p>
-              <button class="w-1/4 py-2 mt-2 text-white font-bold bg-subMain hover:bg-subMain rounded-lg">
-                Learn more
-              </button>
+                <p className='text-white text-xl font-bold'>From Sea to Sky: Special <p className='flex flex-col'>Cargo Team ships <p className='flex flex-col'></p> Helicopter to Chile<p /></p></p>
+                <button class="w-1/4 py-2 mt-2 text-white font-bold bg-subMain hover:bg-subMain rounded-lg">
+                  Learn more
+                </button>
               </div>
             </div>
             <img class="w-full" src="https://static-cf.hapag-lloyd.com/content/website/en/company/_jcr_content/par/fullwidthcarousel_8d/newsteasers/newsteaser_560a/desktop.image.img.transform/news-teaser-desktop/c-1715771333450.jpg/a-1715771285011.jpg/Special_Cargo_2024_1.jpg" />
           </div>
         </div>
         <div className="my-4 border-b-2 border-dryGray mb-4 mx-2.5"></div>
+        <h1 className="text-4xl font-bold text-center">Quick Access</h1>
+        <div className="w-10 my-4 border-b-4 border-subMain mx-auto mb-4"></div>
+        <div className="w-full flex">
+          <div className="w-1/3 mx-4">
+            <img src="https://static-cf.hapag-lloyd.com/content/website/en/company/_jcr_content/par/containermodule/cmpar/x_column_50a/x_column_element_35c/xcolumnpar/contentteaser_18a0/desktop.image.img.transform/content-teaser-desktop/c-1622800608366.jpg/a-1624344236280.jpg/HLAG_SeaPersonal_11_780x390.jpg" />
+            <span className="block bg-transparent pt-4 pb-8">Career</span>
+          </div>
+          <div className="w-1/3 mx-4">
+            <img src="https://static-cf.hapag-lloyd.com/content/website/en/company/_jcr_content/par/containermodule/cmpar/x_column_50a/x_column_element_641/xcolumnpar/contentteaser_faa4/desktop.image.img.transform/content-teaser-desktop/c-1634716678374.jpg/a-1634716644441.jpg/HLAG_Teaser_Valuespage_780x390_021.jpg" />
+            <span className="block bg-transparent pt-4 pb-8">Our Values</span>
+          </div>
+          <div className="w-1/3 mx-4">
+            <img src="https://static-cf.hapag-lloyd.com/content/website/en/company/_jcr_content/par/containermodule/cmpar/x_column_50a/x_column_element_5aa/xcolumnpar/contentteaser_8669/desktop.image.img.transform/content-teaser-desktop/c-1620740074457.jpg/a-1624344240363.jpg/HLAG_LandPersonal_06_780x390.jpg" />
+            <span className="block bg-transparent pt-4 pb-8">Investor Relations</span>
+          </div>
+        </div>
+
       </div>
     </Layout>
   );
