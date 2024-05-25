@@ -16,6 +16,7 @@ module.exports = {
         dryGray: "#E0D5D5",
         bgFooter: "#e1e8ed",
         bgOur: "#33424f",
+        hoverLearnMore: "#FF812E",
         
       },
       fontFamily: {
