@@ -7,7 +7,7 @@ function AboutUs() {
     <Layout>
       <div className='w-full overflow-x-hidden'>
         <Banner />
-        <h2 className="text-2sm text-center opacity-50">About us</h2>
+        <h2 className="text-2sm text-center opacity-50">About us1</h2>
         <h1 className="text-4xl font-bold text-center">Our Company</h1>
         <div className="w-10 my-4 border-b-4 border-subMain mx-auto mb-4"></div>
         <div className='w-full'>
